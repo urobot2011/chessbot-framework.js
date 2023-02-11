@@ -34,7 +34,7 @@ class chessbotFramework {
       });
       
       if (move === null) return 'snapback';
-      window.setTimeout(this.eventFunction["makeMove"](), 250);
+      this.eventFunction["makeMove"]();
     };
     this.onSnapEnd = function () {
       board.position(game.fen());
