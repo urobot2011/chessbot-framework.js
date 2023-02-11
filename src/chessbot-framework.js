@@ -6,7 +6,7 @@
 // https://github.com/urobot2011/chessbot-framework.js/blob/master/LICENSE.md
 
 class chessbotFramework {
-  constructor(board, game, eventFunction, botname, relativename) {
+  constructor(board, game, botname, relativename) {
     console.log('chessbot-framework.js v1.0.0');
     this.board = board;
     this.game = game;
@@ -21,12 +21,8 @@ class chessbotFramework {
     
     this.start_bool = 0;
     
-    if(!this.eventFunction["makeMove"]){
-      this.eventFunction["makeMove"] = function () {};
-    }
-    if(!this.eventFunction["updateStatus"]){
-      this.eventFunction["updateStatus"] = function () {};
-    }
+    this.eventFunction["makeMove"] = function () {};
+    this.eventFunction["updateStatus"] = function () {};
   }
   chessbotStart(id = 'myBoard') {
     this.onDragStart = function (source, piece, position, orientation) {
