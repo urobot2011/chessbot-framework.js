@@ -10,10 +10,10 @@ class chessbotFramework {
     console.log('chessbot-framework.js v1.0.0');
     this.board = board;
     this.game = game;
-    this.eventFunction = eventFunction;
+    this.eventFunction = [];
     this.botcolor = "b";
     this.botname = botname;
-    this.relativename = this.relativename;
+    this.relativename = relativename;
     
     this.event_start = "start";
     this.event_renamebot = "renamebot";
