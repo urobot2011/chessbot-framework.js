@@ -33,7 +33,7 @@ class chessbotFramework {
       });
       
       if (move === null) return 'snapback';
-      window.setTimeout(this.eventFunction["makeMove"], 250);
+      window.setTimeout(this.eventFunction["makeMove"](), 250);
     };
     this.onSnapEnd = function () {
       board.position(game.fen());
@@ -72,9 +72,9 @@ class chessbotFramework {
       if(this.botcolor == "w"){
         board.position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         board.orientation('black');
-        window.setTimeout(this.eventFunction["makeMove"], 250);
+        window.setTimeout(this.eventFunction["makeMove"](), 250);
       }
-      this.eventFunction["updateStatus"];
+      this.eventFunction["updateStatus"]();
     }
     if(eventArr[0] == this.event_renamebot){
       this.botname = eventArr[1];
