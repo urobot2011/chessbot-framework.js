@@ -95,7 +95,7 @@ chessbot-framework.js
   }
   
   eventFunction["makeMove"] = function () {
-    makeRandomMove();
+    window.setTimeout(makeRandomMove, 250);
   }
   
   function updateStatus () {
