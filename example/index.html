@@ -65,7 +65,7 @@ chessbot-framework.js
 <script>
   var board;
   var game = new Chess();
-  var bot;
+  var bot = new chessbotFramework(board, game, [], "botname", "relativename");
   
   var $start = $('#start');
   var $fen = $('#fen');
@@ -135,7 +135,7 @@ chessbot-framework.js
     updateStatus();
   }
   
-  bot = new chessbotFramework(board, game, eventFunction, "botname", "relativename");
+  bot.eventFunction = eventFunction;
   bot.chessbotStart('myBoard');
 </script>
 </body>
