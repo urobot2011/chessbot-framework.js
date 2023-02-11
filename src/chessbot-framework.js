@@ -20,6 +20,41 @@ class chessbotFramework {
     this.event_renamerelative = "renamerelative";
     
     this.start_bool = 0;
+    
+    this.onDragStart = function (source, piece, position, orientation) {
+      if (game.game_over()) return false;
+      if (piece.search(/^${botcolor}/) !== -1) return false;
+    };
+    this.onDrop = function (source, target) {
+      var move = game.move({
+        from: source,
+        to: target,
+        promotion: 'q'
+      });
+      
+      if (move === null) return 'snapback';
+      window.setTimeout(makeMove, 250);
+    };
+    this.onSnapEnd = function () {
+      board.position(game.fen());
+    };
+    this.pieceTheme = function (piece) {
+      if (piece.search(/w/) !== -1) {
+        return 'https://urobot2011.github.io/SaveMartin/MartyBot/chessboardjs/img/chesspieces/wikipedia/' + piece + '.png';
+      }
+      return 'https://urobot2011.github.io/SaveMartin/MartyBot/chessboardjs/img/chesspieces/wikipedia/' + piece + '.png';
+    };
+  }
+  chessbotStart(id = 'myBoard') {
+    var config = {
+      pieceTheme: this.pieceTheme,
+      draggable: true,
+      position: 'start',
+      onDragStart: this.onDragStart,
+      onDrop: this.onDrop,
+      onSnapEnd: this.onSnapEnd
+    };
+    board = Chessboard(id, config);
   }
   event(eventArr) {
     if(eventArr[0] == this.event_start){
