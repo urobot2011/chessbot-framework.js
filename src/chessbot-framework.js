@@ -20,6 +20,13 @@ class chessbotFramework {
     this.event_renamerelative = "renamerelative";
     
     this.start_bool = 0;
+    
+    if(!this.eventFunction["makeMove"]){
+      this.eventFunction["makeMove"] = function () {};
+    }
+    if(!this.eventFunction["updateStatus"]){
+      this.eventFunction["updateStatus"] = function () {};
+    }
   }
   chessbotStart(id = 'myBoard') {
     this.onDragStart = function (source, piece, position, orientation) {
@@ -71,7 +78,7 @@ class chessbotFramework {
       if(this.botcolor == "w"){
         board.position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         board.orientation('black');
-        window.setTimeout(this.eventFunction["makeMove"](), 250);
+        this.eventFunction["makeMove"]();
       }
       this.eventFunction["updateStatus"]();
     }
