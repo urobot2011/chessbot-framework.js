@@ -20,7 +20,8 @@ class chessbotFramework {
     this.event_renamerelative = "renamerelative";
     
     this.start_bool = 0;
-    
+  }
+  chessbotStart(id = 'myBoard') {
     this.onDragStart = function (source, piece, position, orientation) {
       if (game.game_over()) return false;
       if (piece.search(/^${botcolor}/) !== -1) return false;
@@ -44,8 +45,6 @@ class chessbotFramework {
       }
       return 'https://urobot2011.github.io/SaveMartin/MartyBot/chessboardjs/img/chesspieces/wikipedia/' + piece + '.png';
     };
-  }
-  chessbotStart(id = 'myBoard') {
     var config = {
       pieceTheme: this.pieceTheme,
       draggable: true,
