@@ -65,7 +65,7 @@ chessbot-framework.js
 <script>
   var board;
   var game = new Chess();
-  var bot = new chessbotFramework(board, game, "botname", "relativename");
+  var bot = new chessbotFramework(board, game, "botname", "relativename", {makeMove: window.setTimeout(makeRandomMove, 250), updateStatus: updateStatus});
   
   var $start = $('#start');
   var $fen = $('#fen');
@@ -92,10 +92,6 @@ chessbot-framework.js
     var randomIdx = Math.floor(Math.random() * possibleMoves.length);
     game.move(possibleMoves[randomIdx]);
     board.position(game.fen());
-  }
-  
-  eventFunction["makeMove"] = function () {
-    window.setTimeout(makeRandomMove, 250);
   }
   
   function updateStatus () {
@@ -131,11 +127,6 @@ chessbot-framework.js
     $pgn.html(game.pgn());
   }
   
-  eventFunction['updateStatus'] = function () {
-    updateStatus();
-  }
-  
-  bot.eventFunction = eventFunction;
   bot.chessbotStart('myBoard');
 </script>
 </body>
