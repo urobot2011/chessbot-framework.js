@@ -65,7 +65,14 @@ chessbot-framework.js
 <script>
   var board;
   var game = new Chess();
-  var bot = new chessbotFramework(board, game, "botname", "relativename", {makeMove: window.setTimeout(makeRandomMove, 250), updateStatus: updateStatus});
+  var bot = new chessbotFramework(board, game, "botname", "relativename", {
+    makeMove: function() {
+      window.setTimeout(makeRandomMove, 250)
+    }, 
+    updateStatus: function() {
+      updateStatus
+    }
+  });
   
   var $start = $('#start');
   var $fen = $('#fen');
