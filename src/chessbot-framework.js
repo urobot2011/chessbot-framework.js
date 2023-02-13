@@ -5,7 +5,8 @@
 // Released under the MIT license
 // https://github.com/urobot2011/chessbot-framework.js/blob/master/LICENSE.md
 
-$(document).ready(function(){
+//$(document).ready(function(){
+(function(){
   class chessbotFramework {
     constructor(board, game, botname, relativename, eventFunction) {
       console.log('chessbot-framework.js v1.0.0');
@@ -88,4 +89,5 @@ $(document).ready(function(){
       }
     }
   }
-});
+})();
+//});
