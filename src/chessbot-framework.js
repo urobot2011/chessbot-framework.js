@@ -6,11 +6,11 @@
 // https://github.com/urobot2011/chessbot-framework.js/blob/master/LICENSE.md
 
 class chessbotFramework {
-  constructor(board, game, botname, relativename) {
+  constructor(board, game, botname, relativename, eventFunction) {
     console.log('chessbot-framework.js v1.0.0');
     this.board = board;
     this.game = game;
-    this.eventFunction = [];
+    this.eventFunction = eventFunction;
     this.botcolor = "b";
     this.botname = botname;
     this.relativename = relativename;
@@ -21,10 +21,9 @@ class chessbotFramework {
     
     this.start_bool = 0;
     
-    this.eventFunction["makeMove"] = function () {};
-    this.eventFunction["updateStatus"] = function () {};
-  }
-  chessbotStart(id = 'myBoard') {
+    //this.makeMove = function () {};
+    //this.updateStatus = function () {};
+    
     this.onDragStart = function (source, piece, position, orientation) {
       if (game.game_over()) return false;
       if (piece.search(/^${botcolor}/) !== -1) return false;
@@ -37,7 +36,7 @@ class chessbotFramework {
       });
       
       if (move === null) return 'snapback';
-      this.eventFunction["makeMove"]();
+      this.eventFunction.makeMove();
     };
     this.onSnapEnd = function () {
       board.position(game.fen());
@@ -48,6 +47,8 @@ class chessbotFramework {
       }
       return 'https://urobot2011.github.io/SaveMartin/MartyBot/chessboardjs/img/chesspieces/wikipedia/' + piece + '.png';
     };
+  }
+  chessbotStart(id = 'myBoard') {
     var config = {
       pieceTheme: this.pieceTheme,
       draggable: true,
@@ -74,9 +75,9 @@ class chessbotFramework {
       if(this.botcolor == "w"){
         board.position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
         board.orientation('black');
-        this.eventFunction["makeMove"]();
+        this.eventFunction.makeMove();
       }
-      this.eventFunction["updateStatus"]();
+      this.eventFunction.updateStatus();
     }
     if(eventArr[0] == this.event_renamebot){
       this.botname = eventArr[1];
