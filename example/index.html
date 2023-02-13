@@ -63,6 +63,7 @@ chessbot-framework.js
 <script src="https://urobot2011.github.io/SaveMartin/MartyBot/chess/chess.js"></script>
 <script src="https://urobot2011.github.io/chessbot-framework.js/src/chessbot-framework.js"></script>
 <script>
+$(document).ready(function(){
   var board;
   var game = new Chess();
   var bot = new chessbotFramework(board, game, "botname", "relativename", {
@@ -135,6 +136,7 @@ chessbot-framework.js
   }
   
   bot.chessbotStart('myBoard');
+});
 </script>
 </body>
 </html>
